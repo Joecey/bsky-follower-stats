@@ -1,4 +1,4 @@
 # Bsky Follower Stats
 
 Todo:
-- [] Upgrade site to deno
+- [ ] Upgrade site to deno
