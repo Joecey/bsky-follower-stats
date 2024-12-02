@@ -1,3 +1,4 @@
 # Bsky Follower Stats
 
-`deno task`
+Todo:
+- [] Upgrade site to deno
