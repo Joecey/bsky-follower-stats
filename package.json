@@ -10,13 +10,18 @@
         "astro": "astro"
     },
     "dependencies": {
+        "@ark-ui/react": "^4.4.4",
         "@astrojs/check": "^0.9.4",
         "@astrojs/node": "^8.3.4",
+        "@astrojs/tailwind": "^5.1.3",
+        "@atproto/api": "^0.13.18",
         "astro": "^4.16.16",
+        "tailwindcss": "^3.4.16",
         "typescript": "^5.7.2"
     },
     "devDependencies": {
         "prettier": "^3.4.1",
-        "prettier-plugin-astro": "^0.14.1"
+        "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-tailwindcss": "^0.6.9"
     }
 }
