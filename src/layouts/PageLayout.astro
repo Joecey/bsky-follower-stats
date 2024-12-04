@@ -1,3 +1,10 @@
+---
+import '@fontsource/outfit'
+import '@fontsource/domine'
+
+const { title } = Astro.props
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,10 +12,14 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<main
+			class="flex min-h-full flex-col items-center justify-center prose-headings:font-heading prose-h1:text-4xl"
+		>
+			<slot />
+		</main>
 	</body>
 </html>
 

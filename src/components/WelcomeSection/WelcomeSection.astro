@@ -1,0 +1,24 @@
+---
+import astroLogo from '../../assets/astro.svg'
+import background from '../../assets/background.svg'
+import { WelcomeSectionContent } from './WelcomeSectionContent'
+---
+
+<!-- make this container a wrapper or a layout?? -->
+<div id="welcome-section" class="flex flex-col gap-4">
+	<!-- cool svg background goes here  -->
+	<img
+		class="fixed left-0 top-0 z-[-1] h-full w-full blur-3xl"
+		src={background.src}
+		alt=""
+		fetchpriority="high"
+	/>
+	<section id="hero">
+		<a href="https://astro.build"
+			><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
+		>
+		<h1 class="font-heading font-bold">Bsky Follower Statistics</h1>
+		<p>This page is a work in progress :)</p>
+	</section>
+	<WelcomeSectionContent />
+</div>
