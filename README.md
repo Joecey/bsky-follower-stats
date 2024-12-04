@@ -1,4 +1,5 @@
 # Bsky Follower Stats
 
 Todo:
-- [ ] Upgrade site to deno
+- [ ] add deps
+- [ ] get blueksy api working for a handle
