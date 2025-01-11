@@ -10,7 +10,7 @@ export const BlueskyHandleForm = () => {
                 <Field.Label className="py-1 text-xl">
                     Enter your @bluesky handle to learn more about your followers!
                 </Field.Label>
-                <Field.Input className="text-2xl" />
+                <Field.Input className="rounded-sm text-2xl" />
                 <Field.HelperText className="text-sm text-gray-600">
                     Make sure that you have a valid bluesky handle!
                 </Field.HelperText>
