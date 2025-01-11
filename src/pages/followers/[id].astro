@@ -1,0 +1,15 @@
+---
+export const prerender = false
+
+// import { FollowerPage } from '../components/WelcomeSection'
+import PageLayout from '../../layouts/PageLayout.astro'
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const { id } = Astro.params
+---
+
+<PageLayout title="Bluesky Follower Stats - User">
+	<h1>hi {id}</h1>
+</PageLayout>

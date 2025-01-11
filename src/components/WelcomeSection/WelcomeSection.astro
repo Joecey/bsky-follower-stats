@@ -1,24 +1,39 @@
 ---
 import astroLogo from '../../assets/astro.svg'
+import blueskyLogo from '../../assets/bluesky-logo.svg'
 import background from '../../assets/background.svg'
-import { WelcomeSectionContent } from './WelcomeSectionContent'
+import { BlueskyHandleForm } from './BlueskyHandleForm'
 ---
 
 <!-- make this container a wrapper or a layout?? -->
-<div id="welcome-section" class="flex flex-col gap-4">
+<div id="welcome-section" class="flex w-full max-w-5xl flex-col items-center gap-4 rounded-lg p-4">
 	<!-- cool svg background goes here  -->
 	<img
+		id="background"
 		class="fixed left-0 top-0 z-[-1] h-full w-full blur-3xl"
 		src={background.src}
 		alt=""
 		fetchpriority="high"
 	/>
-	<section id="hero">
+	<section id="hero" class="flex flex-col items-center">
 		<a href="https://astro.build"
-			><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
+			><img
+				src={blueskyLogo.src}
+				width="50"
+				height="48"
+				alt="Astro Homepage"
+				class="mb-2"
+			/></a
 		>
 		<h1 class="font-heading font-bold">Bsky Follower Statistics</h1>
-		<p>This page is a work in progress :)</p>
+		<p class="text-lg">See your relationship with every user on Bluesky! (Work in progress!)</p>
 	</section>
-	<WelcomeSectionContent />
+
+	<BlueskyHandleForm />
+	<p>
+		Created by <a
+			href="https://joedoescoding.com"
+			class="underline transition-colors hover:text-purple-700">joedoescoding.com</a
+		>
+	</p>
 </div>
