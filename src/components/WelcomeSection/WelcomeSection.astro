@@ -27,11 +27,13 @@ import { BlueskyHandleForm } from './BlueskyHandleForm'
 				class="mb-2"
 			/></a
 		>
-		<h1 class="font-heading font-bold">Bsky Follower Statistics</h1>
-		<p class="text-lg">See your relationship with every user on Bluesky! (Work in progress!)</p>
+		<p class="text-xl">Bsky Follower Statistics (Work in progress)</p>
+		<h1 class="py-2 text-center text-5xl md:w-4/5">
+			See your influence amongst every Bluesky user
+		</h1>
 	</section>
 
-	<BlueskyHandleForm />
+	<BlueskyHandleForm client:load transition:persist />
 </div>
 <div id="credits" class="z-10 my-8">
 	<p>
