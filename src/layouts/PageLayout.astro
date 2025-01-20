@@ -1,7 +1,7 @@
 ---
 import '@fontsource/outfit'
 import '@fontsource/domine'
-
+import background from '@assets/background.svg'
 const { title } = Astro.props
 import { ClientRouter } from 'astro:transitions'
 ---
@@ -20,6 +20,14 @@ import { ClientRouter } from 'astro:transitions'
 		<main
 			class="flex min-h-full flex-col items-center justify-center prose-headings:font-heading"
 		>
+			<!-- cool svg background goes here  -->
+			<img
+				id="background"
+				class="fixed left-0 top-0 z-[-1] h-full w-full blur-3xl"
+				src={background.src}
+				alt=""
+				fetchpriority="high"
+			/>
 			<slot />
 		</main>
 	</body>

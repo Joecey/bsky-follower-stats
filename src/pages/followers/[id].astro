@@ -1,15 +1,42 @@
 ---
 export const prerender = false
 
-// import { FollowerPage } from '../components/WelcomeSection'
 import PageLayout from '../../layouts/PageLayout.astro'
+import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
+type jazcoAPIResponse = {
+	total_users: number
+	updated_at: Date
+}
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+type userDataResponse = {
+	displayName: string
+	followersCount: number
+}
 
 const { id } = Astro.params
+// get user data from bluesky public api
+const userResponse = await fetch(
+	`https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${id}`
+)
+
+const { displayName, followersCount: userFollowers } =
+	(await userResponse.json()) as userDataResponse
+
+// fetching current user count on bluesky
+const response = await fetch('https://bsky-search.jazco.io/stats')
+const { total_users: totalUsers, updated_at: lastUpdated } =
+	(await response.json()) as jazcoAPIResponse
+
+const followerPercentageAsArray = getFollowerPercentageAsCharArray({
+	userFollowers,
+	totalUsers,
+})
 ---
 
 <PageLayout title="Bluesky Follower Stats - User">
 	<h1>hi {id}</h1>
+	<!-- TODO: move this into FollowerPage folder -->
+	<div id="percentage-display" class="flex gap-4">
+		{followerPercentageAsArray.map((char) => <p class="text-5xl">{char}</p>)}
+	</div>
 </PageLayout>
