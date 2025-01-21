@@ -5,6 +5,8 @@ import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
 import { FollowerPercentageDetails } from '@components/FollowerPage'
 
+Astro.response.headers.set('Cache-Control', 'public, max-age=300')
+
 type jazcoAPIResponse = {
 	total_users: number
 	updated_at: Date
