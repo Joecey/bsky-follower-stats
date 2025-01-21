@@ -3,6 +3,8 @@ export const prerender = false
 
 import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
+import { FollowerPercentageDetails } from '@components/FollowerPage'
+
 type jazcoAPIResponse = {
 	total_users: number
 	updated_at: Date
@@ -34,9 +36,10 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 ---
 
 <PageLayout title="Bluesky Follower Stats - User">
-	<h1>hi {id}</h1>
-	<!-- TODO: move this into FollowerPage folder -->
-	<div id="percentage-display" class="flex gap-4">
-		{followerPercentageAsArray.map((char) => <p class="text-5xl">{char}</p>)}
-	</div>
+	<FollowerPercentageDetails
+		id={id}
+		followerPercentageAsArray={followerPercentageAsArray}
+		totalUsers={totalUsers}
+	/>
+	<a class="mt-4 underline transition-colors hover:text-sky-600" href="/">&larr; Search again</a>
 </PageLayout>

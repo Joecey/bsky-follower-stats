@@ -7,6 +7,7 @@ export const BlueskyHandleForm = () => {
     const defaultUserName = ''
     const [username, setUserName] = useState(defaultUserName)
     const [buttonDisabled, setButtonDisabled] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleInputField = (e: React.ChangeEvent<HTMLInputElement>) => {
         setButtonDisabled(
@@ -34,8 +35,12 @@ export const BlueskyHandleForm = () => {
                 <button
                     className="mt-4 rounded-full bg-sky-500 px-4 py-2 text-base text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-gray-400"
                     disabled={buttonDisabled}
+                    onClick={() => {
+                        setIsLoading(true)
+                        setButtonDisabled(true)
+                    }}
                 >
-                    Search user
+                    {isLoading ? 'Searching...' : 'Search my followers!'}
                 </button>
             </a>
         </div>

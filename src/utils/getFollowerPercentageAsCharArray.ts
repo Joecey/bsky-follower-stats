@@ -8,5 +8,6 @@ export const getFollowerPercentageAsCharArray = ({
     const maxArraySize = 10
     const percentage = ((userFollowers / totalUsers) * 100).toString()
     const percentageDisplayArray = percentage.split('', maxArraySize)
+    percentageDisplayArray.push('%')
     return percentageDisplayArray
 }
