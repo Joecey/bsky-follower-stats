@@ -17,7 +17,7 @@ export const BlueskyHandleForm = () => {
     }
 
     return (
-        <div id="useranme-form" className="w-full">
+        <form id="useranme-form" className="w-full">
             <Field.Root className="flex flex-col">
                 <Field.Label className="py-1 text-lg">
                     Enter your @bluesky handle to learn more about your followers!
@@ -31,18 +31,19 @@ export const BlueskyHandleForm = () => {
                     Make sure that you have a valid bluesky handle!
                 </Field.HelperText>
             </Field.Root>
-            <a href={`/followers/${username}`}>
-                <button
-                    className="mt-4 rounded-full bg-sky-500 px-4 py-2 text-base text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-gray-400"
-                    disabled={buttonDisabled}
-                    onClick={() => {
-                        setIsLoading(true)
-                        setButtonDisabled(true)
-                    }}
-                >
-                    {isLoading ? 'Searching...' : 'Search my followers!'}
-                </button>
-            </a>
-        </div>
+            <button
+                className="mt-4 rounded-full bg-sky-500 px-4 py-2 text-base text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+                disabled={buttonDisabled}
+                onClick={() => {
+                    setIsLoading(true)
+                    setButtonDisabled(true)
+                    window.location.href = `/followers/${username}`
+                }}
+                type="submit"
+                form="useranme-form"
+            >
+                {isLoading ? 'Searching...' : 'Search my followers!'}
+            </button>
+        </form>
     )
 }
