@@ -1,37 +1,14 @@
 ---
 import blueskyLogo from '../../assets/bluesky-logo.svg'
-
-import { BlueskyHandleForm } from './BlueskyHandleForm'
 ---
 
 <!-- make this container a wrapper or a layout?? -->
-<div
-	id="welcome-section"
-	class="isolate flex aspect-video w-full max-w-5xl flex-col items-center justify-center gap-4 rounded-xl bg-sky-300/20 p-8 shadow-lg ring-1 ring-black/5"
->
-	<section id="hero" class="flex flex-col items-center">
-		<a href="https://bsky.app/"
-			><img
-				src={blueskyLogo.src}
-				width="50"
-				height="48"
-				alt="Astro Homepage"
-				class="mb-2"
-			/></a
-		>
-		<p class="text-xl">Bsky Follower Statistics (Work in progress)</p>
-		<h1 class="py-2 text-center text-5xl md:w-4/5">
-			See your influence amongst every Bluesky user
-		</h1>
-	</section>
-
-	<BlueskyHandleForm client:load transition:persist />
-</div>
-<div id="credits" class="z-10 my-8">
-	<p>
-		Created by <a
-			href="https://joedoescoding.com"
-			class="underline transition-colors hover:text-purple-700">@joedoescoding.com</a
-		>
-	</p>
-</div>
+<section id="hero" class="flex flex-col items-center">
+	<a href="https://bsky.app/"
+		><img src={blueskyLogo.src} width="50" height="48" alt="Astro Homepage" class="mb-2" /></a
+	>
+	<p class="text-sky-700 md:text-xl">Bsky Follower Statistics</p>
+	<h1 class="py-2 text-center text-4xl md:w-4/5 md:text-5xl">
+		See your influence amongst every Bluesky user
+	</h1>
+</section>

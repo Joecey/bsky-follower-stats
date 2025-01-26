@@ -17,17 +17,17 @@ export const BlueskyHandleForm = () => {
     }
 
     return (
-        <form id="useranme-form" className="w-full">
+        <form id="useranme-form" className="flex w-full flex-col">
             <Field.Root className="flex flex-col">
-                <Field.Label className="py-1 text-lg">
+                <Field.Label className="py-1 text-center md:text-left md:text-lg">
                     Enter your @bluesky handle to learn more about your followers!
                 </Field.Label>
                 <Field.Input
-                    className={`rounded-md p-1 text-2xl shadow-sm ${username.replace('@', '') === '' ? 'text-gray-400' : 'text-black'} transition-colors`}
+                    className={`rounded-md p-1 text-lg shadow-sm md:text-2xl ${username.replace('@', '') === '' ? 'text-gray-400' : 'text-black'} transition-colors`}
                     onChange={handleInputField}
                     value={username ? `@${username}` : '@'}
                 />
-                <Field.HelperText className="text-sm text-gray-600">
+                <Field.HelperText className="mt-1 text-center text-sm text-gray-600 md:text-left">
                     Make sure that you have a valid bluesky handle!
                 </Field.HelperText>
             </Field.Root>
