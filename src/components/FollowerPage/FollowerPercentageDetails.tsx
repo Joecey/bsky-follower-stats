@@ -8,7 +8,7 @@ export const FollowerPercentageDetails = ({
     totalUsers: number
 }) => {
     return (
-        <div className="flex w-fit max-w-full flex-col items-center justify-center gap-4 p-2">
+        <div className="mt-24 flex w-fit max-w-full flex-col items-center justify-center gap-4 p-2 sm:mt-0">
             {id && (
                 <p className="text-base sm:text-xl">
                     <a
@@ -25,13 +25,13 @@ export const FollowerPercentageDetails = ({
                 {followerPercentageAsArray.map((char, index) => (
                     <h1
                         key={index}
-                        className="motion-delay-300 motion-preset-slide-up flex aspect-video w-full max-w-5xl flex-col items-center justify-center gap-4 rounded-lg bg-sky-300/20 p-1 text-2xl sm:p-2 sm:text-5xl"
+                        className="motion-preset-slide-up flex aspect-video w-full max-w-5xl flex-col items-center justify-center gap-4 rounded-lg bg-sky-300/20 p-1 text-2xl motion-delay-300 sm:p-2 sm:text-5xl"
                     >
                         {char}
                     </h1>
                 ))}
             </div>
-            <p className="motion-delay-500 motion-preset-slide-up text-base sm:text-xl">
+            <p className="motion-preset-slide-up text-base motion-delay-500 sm:text-xl">
                 ...are following you!
             </p>
         </div>
