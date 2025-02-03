@@ -2,3 +2,4 @@
 export { FollowerPercentageDetails } from './FollowerPercentageDetails'
 export { ProfileBanner } from './ProfileBanner'
 export { AvatarName } from './AvatarName'
+export { RawStats } from './RawStats'

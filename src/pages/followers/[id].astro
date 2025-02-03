@@ -3,7 +3,8 @@ export const prerender = false
 
 import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
-import { FollowerPercentageDetails, ProfileBanner } from '@components/FollowerPage'
+import { FollowerPercentageDetails, ProfileBanner, RawStats } from '@components/FollowerPage'
+import { GlassWrapper, StatsTitle } from '@components/common'
 
 Astro.response.headers.set('Cache-Control', 'public, max-age=300')
 
@@ -39,8 +40,6 @@ const {
 	banner,
 } = (await userResponse.json()) as userDataResponse
 
-console.log({ displayName, userFollowers, followsCount, postsCount, avatar, banner })
-
 // fetching current user count on bluesky
 const response = await fetch('https://bsky-search.jazco.io/stats')
 const { total_users: totalUsers, updated_at: lastUpdated } =
@@ -55,17 +54,27 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 <PageLayout title="Bluesky Follower Stats - User">
 	<div
 		id=`follower-information-${id}`
-		class="flex w-full max-w-5xl flex-col items-center justify-center gap-4"
+		class="flex w-full max-w-5xl flex-col items-center justify-center gap-8"
 	>
-		<ProfileBanner displayName={displayName} avatar={avatar} banner={banner} />
-		<FollowerPercentageDetails
-			id={id}
-			followerPercentageAsArray={followerPercentageAsArray}
-			totalUsers={totalUsers}
-		/>
+		<ProfileBanner displayName={displayName} avatar={avatar} banner={banner} id={id} />
+		<div class="w-full">
+			<StatsTitle
+				displayTitle="Follower Percentage"
+				tooltip="This card shows the amount of users that are following you divided by the total number of bluesky users in a percentage form"
+				client:load
+			/>
+			<GlassWrapper>
+				<FollowerPercentageDetails
+					id={id}
+					followerPercentageAsArray={followerPercentageAsArray}
+					totalUsers={totalUsers}
+				/>
+			</GlassWrapper>
+		</div>
+		<RawStats />
 
 		<a class="mt-4 underline transition-colors hover:text-sky-600" href="/"
-			>&larr; Search again</a
-		>
+			>&larr; Search again 🚀
+		</a>
 	</div>
 </PageLayout>

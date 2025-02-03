@@ -4,6 +4,19 @@ import '@fontsource/domine'
 import background from '@assets/background.svg'
 const { title } = Astro.props
 import { ClientRouter } from 'astro:transitions'
+
+const navbarLinks = [
+	{
+		name: 'home',
+		href: '/',
+		newTab: false,
+	},
+	{
+		name: 'github',
+		href: 'https://github.com/Joecey/bsky-follower-stats',
+		newTab: true,
+	},
+]
 ---
 
 <!doctype html>
@@ -16,7 +29,21 @@ import { ClientRouter } from 'astro:transitions'
 		<title>{title}</title>
 		<ClientRouter />
 	</head>
-	<p class="bg-white text-center">lol imagine there's a navbar here (wip)</p>
+	<nav class="flex w-full justify-center gap-4 py-4">
+		{
+			navbarLinks.map((link) => {
+				return (
+					<a
+						href={link.href}
+						target={link.newTab ? '_blank' : '_self'}
+						class="text-lg transition-colors hover:text-sky-600"
+					>
+						{link.name}
+					</a>
+				)
+			})
+		}
+	</nav>
 	<body>
 		<main class="flex h-screen flex-col items-center px-2 prose-headings:font-heading sm:mt-36">
 			<!-- cool svg background goes here  -->

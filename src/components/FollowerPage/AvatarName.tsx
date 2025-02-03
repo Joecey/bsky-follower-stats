@@ -1,5 +1,3 @@
-import { Avatar } from '@ark-ui/react'
-
 export const AvatarName = ({ avatar, displayName }: { avatar: string; displayName: string }) => {
     console.log(avatar)
     return (
