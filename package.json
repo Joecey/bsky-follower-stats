@@ -3,7 +3,7 @@
     "type": "module",
     "version": "0.0.1",
     "scripts": {
-        "preinstall": "npx only-allow pnpm",
+        "preinstall": "npm install -g pnpm && npx only-allow pnpm",
         "dev": "astro dev",
         "build": "astro check && astro build",
         "preview": "astro preview",
