@@ -8,9 +8,9 @@ export const FollowerPercentageDetails = ({
     totalUsers: number
 }) => {
     return (
-        <div className="mt-24 flex w-fit max-w-full flex-col items-center justify-center gap-4 p-2 sm:mt-0">
+        <div className="flex w-full flex-col items-center justify-center gap-4 p-2">
             {id && (
-                <p className="text-base sm:text-xl">
+                <p className="text-center text-base sm:text-xl">
                     <a
                         className="text-sky-600 hover:underline"
                         href={`https://bsky.app/profile/${id}`}
