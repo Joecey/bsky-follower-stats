@@ -17,7 +17,7 @@ export const BlueskyHandleForm = () => {
     }
 
     return (
-        <form id="useranme-form" className="flex w-full flex-col">
+        <form id="useranme-form" className="my-4 flex w-full flex-col">
             <Field.Root className="flex flex-col">
                 <Field.Label className="py-1 text-center md:text-left md:text-lg">
                     Enter your @bluesky handle to learn more about your followers!
