@@ -14,10 +14,11 @@ import PageLayout from '../layouts/PageLayout.astro'
 <PageLayout title="Bluesky Follower Stats">
 	<div
 		id="welcome-section"
-		class="flex w-full max-w-5xl flex-col items-center justify-center gap-2 rounded-xl bg-sky-300/20 p-4 shadow-lg ring-1 ring-black/5 md:gap-4 md:p-8"
+		class="flex w-full max-w-5xl flex-col items-center justify-center gap-4"
 	>
 		<WelcomeSection />
 		<BlueskyHandleForm client:load transition:persist />
+
 		<FeaturesSection />
 		<Credits />
 	</div>
