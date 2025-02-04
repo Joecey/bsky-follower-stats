@@ -1,4 +1,5 @@
 export const AvatarName = ({ avatar, displayName }: { avatar: string; displayName: string }) => {
+    console.log(avatar)
     return (
         <div className="relative mt-[-3rem] flex flex-col items-center gap-1 rounded-lg">
             <img
