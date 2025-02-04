@@ -5,6 +5,11 @@ import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
 import { FollowerPercentageDetails, ProfileBanner, RawStats } from '@components/FollowerPage'
 import { GlassWrapper, StatsTitle } from '@components/common'
+import { PostHogClient } from '@utils/posthog'
+
+const phClient = PostHogClient()
+// TODO: follow this tutorial here to enable feature flags with distinct user ids https://posthog.com/tutorials/astro-analytics
+const rawStatsFlag = await phClient.isFeatureEnabled('raw-stats', '')
 
 Astro.response.headers.set('Cache-Control', 'public, max-age=300')
 
@@ -71,7 +76,7 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 				/>
 			</GlassWrapper>
 		</div>
-		<RawStats />
+		{rawStatsFlag && <RawStats />}
 
 		<a class="mt-4 underline transition-colors hover:text-sky-600" href="/"
 			>&larr; Search again 🚀
