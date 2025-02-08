@@ -11,7 +11,7 @@ export const StatsTitle = ({ displayTitle, tooltip }: Props) => {
     return (
         <Tooltip.Root closeDelay={0} openDelay={0}>
             <Tooltip.Trigger disabled>
-                <h1 className="mb-2 text-left text-lg">{displayTitle} &#9432;</h1>
+                <h1 className="mb-2 text-left text-base md:text-lg">{displayTitle} &#9432;</h1>
             </Tooltip.Trigger>
             <Tooltip.Positioner>
                 <Tooltip.Content className="motion-preset-focus z-50 max-w-60 rounded-lg bg-white p-2 motion-duration-300">

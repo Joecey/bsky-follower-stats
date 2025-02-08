@@ -22,6 +22,7 @@ export default defineConfig({
         schema: {
             SECRET_POSTHOG_KEY: envField.string({ context: 'client', access: 'public' }),
             SECRET_POSTHOG_HOST: envField.string({ context: 'client', access: 'public' }),
+            ENV: envField.string({ context: 'client', access: 'public', default: 'production' }),
         },
     },
 })
