@@ -1,3 +1,5 @@
+// * This is for server side posthog usage *//
+
 import { PostHog } from 'posthog-node'
 
 export const PostHogClient = () => {

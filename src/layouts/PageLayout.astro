@@ -35,7 +35,7 @@ const navbarLinks = [
 					<a
 						href={link.href}
 						target={link.newTab ? '_blank' : '_self'}
-						class="text-lg transition-colors hover:text-sky-600"
+						class="text-sm transition-colors hover:text-sky-600 md:text-lg"
 					>
 						{link.name}
 					</a>
@@ -44,7 +44,9 @@ const navbarLinks = [
 		}
 	</nav>
 	<body>
-		<main class="flex h-screen flex-col items-center px-2 prose-headings:font-heading sm:mt-8">
+		<main
+			class="flex min-h-screen flex-col items-center px-2 prose-headings:font-heading sm:mt-4"
+		>
 			<!-- cool svg background goes here  -->
 			<img
 				id="background"

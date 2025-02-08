@@ -2,7 +2,7 @@ export const AvatarName = ({ avatar, displayName }: { avatar: string; displayNam
     return (
         <div className="relative mt-[-3rem] flex flex-col items-center gap-1 rounded-lg">
             <img
-                className="md:24 w-16 rounded-full shadow-lg shadow-white outline outline-white"
+                className="motion-preset-seesaw w-16 rounded-full shadow-lg shadow-white outline outline-white md:w-20"
                 src={avatar}
                 alt={`${displayName}-bluesky-profile-picture`}
             />

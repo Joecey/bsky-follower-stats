@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from 'astro/config'
 
 import node from '@astrojs/node'
 
@@ -18,4 +18,11 @@ export default defineConfig({
     },
 
     integrations: [tailwind(), react()],
+    env: {
+        schema: {
+            SECRET_POSTHOG_KEY: envField.string({ context: 'client', access: 'public' }),
+            SECRET_POSTHOG_HOST: envField.string({ context: 'client', access: 'public' }),
+            ENV: envField.string({ context: 'client', access: 'public', default: 'production' }),
+        },
+    },
 })

@@ -1,17 +1,18 @@
 ---
 export const prerender = false
-
+import { Credits } from '@components/WelcomeSection'
 import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
 import { FollowerPercentageDetails, ProfileBanner, RawStats } from '@components/FollowerPage'
 import { GlassWrapper, StatsTitle } from '@components/common'
 import { PostHogClient } from '@utils/posthog'
+import { ENV } from 'astro:env/client'
 
+Astro.response.headers.set('Cache-Control', 'public, max-age=300')
 const phClient = PostHogClient()
 // TODO: follow this tutorial here to enable feature flags with distinct user ids https://posthog.com/tutorials/astro-analytics
 const rawStatsFlag = await phClient.isFeatureEnabled('raw-stats', '')
-
-Astro.response.headers.set('Cache-Control', 'public, max-age=300')
+const enableRawStats = rawStatsFlag || ENV === 'development'
 
 type jazcoAPIResponse = {
 	total_users: number
@@ -36,6 +37,10 @@ const userResponse = await fetch(
 	`https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${id}`
 )
 
+if (!userResponse.ok) {
+	return Astro.redirect('/followers/not-found')
+}
+
 const {
 	displayName,
 	followersCount: userFollowers,
@@ -59,14 +64,14 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 <PageLayout title="Bluesky Follower Stats - User">
 	<div
 		id=`follower-information-${id}`
-		class="flex w-full max-w-5xl flex-col items-center justify-center gap-8"
+		class="flex w-full max-w-3xl flex-col items-center justify-center gap-6"
 	>
 		<ProfileBanner displayName={displayName} avatar={avatar} banner={banner} id={id} />
 		<div class="w-full">
 			<StatsTitle
 				displayTitle="Follower Percentage"
 				tooltip="This card shows the amount of users that are following you divided by the total number of bluesky users in a percentage form"
-				client:load
+				client:visible
 			/>
 			<GlassWrapper>
 				<FollowerPercentageDetails
@@ -76,10 +81,18 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 				/>
 			</GlassWrapper>
 		</div>
-		{rawStatsFlag && <RawStats />}
+		{
+			enableRawStats && (
+				<div class="w-full">
+					<StatsTitle displayTitle="All The Stats" />
+					<RawStats />
+				</div>
+			)
+		}
 
 		<a class="mt-4 underline transition-colors hover:text-sky-600" href="/"
 			>&larr; Search again 🚀
 		</a>
 	</div>
+	<Credits />
 </PageLayout>

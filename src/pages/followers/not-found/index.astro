@@ -1,0 +1,27 @@
+---
+import { Credits } from '@components/WelcomeSection'
+import PageLayout from 'src/layouts/PageLayout.astro'
+import { GlassWrapper } from '@components/common'
+---
+
+<PageLayout title="Bluesky Follower Stats - User">
+	<div
+		id=`user-not-found-page`
+		class="mt-16 flex w-full max-w-3xl flex-col items-center justify-center gap-6"
+	>
+		<GlassWrapper>
+			<div class="flex flex-col items-center gap-4">
+				<h1 class="text-3xl md:text-5xl">User not found :(</h1>
+				<p>
+					9/10 is probably due to the fact you typed your name wrong. The 1/10 times, it's
+					probably my fault. If you think there is an issue, please raise it with steps to
+					re-create using the github link above!
+				</p>
+			</div>
+		</GlassWrapper>
+	</div>
+	<a class="mt-4 underline transition-colors hover:text-sky-600" href="/"
+		>&larr; Search again 🚀
+	</a>
+	<Credits />
+</PageLayout>
