@@ -38,6 +38,6 @@
         "tailwindcss-motion": "^1.0.1"
     },
     "engines": {
-        "pnpm": "9.15.4"
+        "pnpm": "10.2.1"
     }
 }
