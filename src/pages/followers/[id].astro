@@ -1,6 +1,6 @@
 ---
 export const prerender = false
-
+import { Credits } from '@components/WelcomeSection'
 import PageLayout from '../../layouts/PageLayout.astro'
 import { getFollowerPercentageAsCharArray } from '@utils/getFollowerPercentageAsCharArray'
 import { FollowerPercentageDetails, ProfileBanner, RawStats } from '@components/FollowerPage'
@@ -36,6 +36,10 @@ const { id } = Astro.params
 const userResponse = await fetch(
 	`https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=${id}`
 )
+
+if (!userResponse.ok) {
+	return Astro.redirect('/followers/not-found')
+}
 
 const {
 	displayName,
@@ -90,4 +94,5 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 			>&larr; Search again 🚀
 		</a>
 	</div>
+	<Credits />
 </PageLayout>
