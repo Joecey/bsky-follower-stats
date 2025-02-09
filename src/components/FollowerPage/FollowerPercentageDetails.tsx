@@ -11,7 +11,7 @@ export const FollowerPercentageDetails = ({
     totalUsers: number
 }) => {
     return (
-        <div className="flex w-full flex-col items-center justify-center gap-4 p-2">
+        <div className="flex w-full flex-col items-center justify-center gap-4">
             {id && (
                 <p className="text-center text-base sm:text-lg">
                     <a
