@@ -1,11 +1,10 @@
-import { usePostHog } from 'posthog-js/react'
+import posthog from 'posthog-js'
 import { Field } from '@ark-ui/react/field'
 import { useState } from 'react'
 import trim from 'lodash/trim'
 import toLower from 'lodash/toLower'
 
 export const BlueskyHandleForm = () => {
-    const posthog = usePostHog()
     const defaultUserName = ''
     const [username, setUserName] = useState(defaultUserName)
     const [buttonDisabled, setButtonDisabled] = useState(true)
