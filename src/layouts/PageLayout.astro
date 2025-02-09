@@ -3,6 +3,7 @@ import '@fontsource/outfit'
 import '@fontsource/domine'
 import background from '@assets/background.svg'
 import { ClientRouter } from 'astro:transitions'
+import { Posthog } from '@utils/posthog'
 
 const { title } = Astro.props
 const navbarLinks = [
@@ -26,6 +27,7 @@ const navbarLinks = [
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<Posthog />
 		<ClientRouter />
 	</head>
 	<nav class="flex w-full justify-center gap-4 py-4">

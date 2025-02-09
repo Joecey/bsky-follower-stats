@@ -1,9 +1,11 @@
+import { usePostHog } from 'posthog-js/react'
 import { Field } from '@ark-ui/react/field'
 import { useState } from 'react'
 import trim from 'lodash/trim'
 import toLower from 'lodash/toLower'
 
 export const BlueskyHandleForm = () => {
+    const posthog = usePostHog()
     const defaultUserName = ''
     const [username, setUserName] = useState(defaultUserName)
     const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -17,7 +19,16 @@ export const BlueskyHandleForm = () => {
     }
 
     return (
-        <form id="useranme-form" className="my-4 flex w-full flex-col">
+        <form
+            id="useranme-form"
+            className="my-4 flex w-full flex-col"
+            onSubmit={() => {
+                posthog?.capture('clicked_search_followers', { username })
+                setIsLoading(true)
+                setButtonDisabled(true)
+                window.location.href = `/followers/${username}`
+            }}
+        >
             <Field.Root className="flex flex-col">
                 <Field.Label className="py-1 text-center md:text-left md:text-lg">
                     Enter your @bluesky handle to learn more about your followers!
@@ -34,11 +45,6 @@ export const BlueskyHandleForm = () => {
             <button
                 className="mt-4 rounded-full bg-sky-500 px-4 py-2 text-base text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-gray-400"
                 disabled={buttonDisabled}
-                onClick={() => {
-                    setIsLoading(true)
-                    setButtonDisabled(true)
-                    window.location.href = `/followers/${username}`
-                }}
                 type="submit"
                 form="useranme-form"
             >
