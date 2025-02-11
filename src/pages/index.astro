@@ -17,7 +17,7 @@ import PageLayout from '../layouts/PageLayout.astro'
 		class="flex w-full max-w-3xl flex-col items-center justify-center gap-4"
 	>
 		<WelcomeSection />
-		<BlueskyHandleForm client:only="react" transition:persist />
+		<BlueskyHandleForm client:load transition:persist />
 
 		<FeaturesSection />
 		<Credits />
