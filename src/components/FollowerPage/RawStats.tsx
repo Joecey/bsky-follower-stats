@@ -32,7 +32,7 @@ export const RawStats = ({ userFollowers, followsCount, postsCount, createdAt }:
             <div className="flex flex-col gap-2 min-[412px]:flex-row">
                 <GlassWrapperReact>
                     <p className="w-full text-center text-sm sm:text-base">
-                        From the{' '}
+                        Starting from {' '}
                         <span className="text-sky-500">
                             {createdAt.toLocaleDateString(undefined, {
                                 year: 'numeric',
