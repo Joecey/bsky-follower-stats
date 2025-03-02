@@ -26,6 +26,7 @@ type userDataResponse = {
 	postsCount: number
 	avatar: string
 	banner?: string
+	createdAt: string
 }
 
 const { id } = Astro.params
@@ -48,6 +49,7 @@ const {
 	postsCount,
 	avatar,
 	banner,
+	createdAt,
 } = (await userResponse.json()) as userDataResponse
 
 // fetching current user count on bluesky
@@ -84,8 +86,17 @@ const followerPercentageAsArray = getFollowerPercentageAsCharArray({
 		{
 			enableRawStats && (
 				<div class="w-full">
-					<StatsTitle displayTitle="All The Stats" />
-					<RawStats />
+					<StatsTitle
+						displayTitle="All The Stats"
+						tooltip="These are the raw numbers associated with your account"
+						client:visible
+					/>
+					<RawStats
+						userFollowers={userFollowers}
+						followsCount={followsCount}
+						postsCount={postsCount}
+						createdAt={new Date(createdAt)}
+					/>
 				</div>
 			)
 		}
