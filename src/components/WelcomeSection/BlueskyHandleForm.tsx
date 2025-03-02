@@ -22,8 +22,8 @@ export const BlueskyHandleForm = () => {
             id="useranme-form"
             className="my-4 flex w-full flex-col"
             onSubmit={(event) => {
+                posthog?.capture('clicked_search_followers', { user_searched: username })
                 event.preventDefault()
-                posthog?.capture('clicked_search_followers', { username })
                 setIsLoading(true)
                 setButtonDisabled(true)
                 window.location.href = `/followers/${username}`
